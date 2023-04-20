@@ -1,0 +1,16 @@
+build:local-bes --bes_backend=grpc://localhost:1985
+build:local-bes --bes_results_url=http://localhost:8080/invocation/
+build:local-cache --remote_cache=grpc://localhost:1985
+build:local-rbe --remote_executor=grpc://localhost:1985
+
+build:local --config=local-bes
+build:local --config=local-cache
+
+build:dev-bes --bes_backend=remote.buildbuddy.dev
+build:dev-bes --bes_results_url=https://app.buildbuddy.dev/invocation/
+build:dev-cache --remote_cache=remote.buildbuddy.dev
+build:dev-rbe --remote_executor=remote.buildbuddy.dev
+
+build:dev --config=dev-bes
+build:dev --config=dev-cache
+
